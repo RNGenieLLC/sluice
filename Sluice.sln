@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35919.96 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sluice", "Sluice\Sluice.csproj", "{7E5EFAF5-92C4-4E75-B230-219CE67E7ACD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CakeBuild", "ZZCakeBuild\CakeBuild.csproj", "{DACD3501-2FAE-46B9-B9CC-A0C4D319E693}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7E5EFAF5-92C4-4E75-B230-219CE67E7ACD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E5EFAF5-92C4-4E75-B230-219CE67E7ACD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E5EFAF5-92C4-4E75-B230-219CE67E7ACD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E5EFAF5-92C4-4E75-B230-219CE67E7ACD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DACD3501-2FAE-46B9-B9CC-A0C4D319E693}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DACD3501-2FAE-46B9-B9CC-A0C4D319E693}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DACD3501-2FAE-46B9-B9CC-A0C4D319E693}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DACD3501-2FAE-46B9-B9CC-A0C4D319E693}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {913DCC9F-B542-4698-8D3D-D4D8AE75AA1E}
+	EndGlobalSection
+EndGlobal

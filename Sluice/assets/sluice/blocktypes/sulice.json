@@ -1,0 +1,85 @@
+{
+    "code": "sluice",
+    "class": "sluice.sluice",
+    "shape": {
+        "base": "sluice"
+    },
+    "creativeInventory": {
+        "general": [
+            "*"
+        ],
+        "sulice": [
+            "*"
+        ]
+    },
+    "attributes": {
+        "mapColorCode": "settlement"
+    },
+    "behaviors": [
+        { "name": "Container" },
+        {
+            "name": "Multiblock",
+            "properties": {
+                "sizex": 3,
+                "sizey": 1,
+                "sizez": 1,
+                "cposition": {
+                    "x": 0,
+                    "y": 0,
+                    "z": 0
+                }
+            }
+        }
+    ],
+    "selectionBox": {
+        "x1": 0,
+        "y1": 0,
+        "z1": 0,
+        "x2": 1,
+        "y2": 0.38,
+        "z2": 1
+    },
+    "collisionBox": {
+        "x1": 0,
+        "y1": 0,
+        "z1": 0,
+        "x2": 1,
+        "y2": 0.38,
+        "z2": 1
+    },
+    "entityclass": "sluice.BESluice",
+    "sidesolid": {
+        "all": false,
+        "down": true
+    },
+    "sideopaque": {
+        "all": false,
+        "down": true
+    }
+    //"collisionSelectionBox": {
+    //    "x1": 0,
+    //    "y1": 0,
+    //    "z1": 0,
+    //    "x2": 2.5,
+    //    "y2": 0.5,
+    //    "z2": 1
+    //}
+    // "blockmaterial": "Stone"
+    //"textures": {
+    //"basematerial": {
+    //    "base": "game:block/stone/quern/complete"
+    //},
+    //    "baseside": {
+    //        "base": "game:block/stone/rock/slate1",
+    //        "overlays": [ "game:block/stone/quern/baseside" ]
+    //    },
+    //    "baseup": {
+    //        "base": "game:block/stone/rock/slate1",
+    //        "overlays": [ "game:block/stone/quern/grooves" ]
+    //    },
+    //    "grindstoneup": {
+    //        "base": "game:block/stone/rock/slate1",
+    //        "overlays": [ "game:block/stone/quern/grindstoneup" ]
+    //    }
+    //}
+}

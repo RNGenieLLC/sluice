@@ -1,0 +1,13 @@
+{
+    "type": "code",
+    "modid": "sluice",
+    "name": "Sluice",
+    "authors": [
+        "Bloodypizza17"
+    ],
+    "description": "A simple sluice for automated panning.",
+    "version": "1.0.0",
+    "dependencies": {
+        "game": ""
+    }
+}

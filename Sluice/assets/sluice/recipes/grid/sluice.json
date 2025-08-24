@@ -1,0 +1,15 @@
+{
+    "ingredientPattern": "III",
+    "width": 3,
+    "height": 1,
+    "ingredients": {
+        "I": {
+            "type": "item",
+            "code": "game:rod-iron"
+        }
+    },
+    "output": {
+        "type": "block",
+        "code":  "sluice"
+    }
+}
