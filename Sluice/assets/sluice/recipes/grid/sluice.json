@@ -10,6 +10,6 @@
     },
     "output": {
         "type": "block",
-        "code":  "sluice"
+        "code":  "horizontalsluice-north"
     }
 }

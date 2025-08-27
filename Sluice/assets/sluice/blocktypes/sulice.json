@@ -4,14 +4,13 @@
     "shape": {
         "base": "sluice"
     },
-    "creativeInventory": {
-        "general": [
-            "*"
-        ],
-        "sulice": [
-            "*"
-        ]
-    },
+    "creativeInventory": {},
+    "drops": [
+        {
+            "item": "horizontalsluice-north",
+            "count": 1
+        }
+    ],
     "attributes": {
         "mapColorCode": "settlement"
     },
