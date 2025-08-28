@@ -6,7 +6,7 @@
         "Bloodypizza17"
     ],
     "description": "A simple sluice for automated panning.",
-    "version": "2.1.0",
+    "version": "2.1.1",
     "dependencies": {
         "game": ""
     }

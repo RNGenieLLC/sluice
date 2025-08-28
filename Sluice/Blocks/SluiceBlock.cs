@@ -1,4 +1,6 @@
 using Vintagestory.API.Common;
+using Vintagestory.GameContent;
+
 
 namespace Sluice.Blocks
 {

@@ -142,6 +142,7 @@ namespace Sluice.BlockEntities
                     {
                         jis.Code = selectedDropRate.Code;
                         jis.Type = selectedDropRate.Type;
+                        jis.Attributes = selectedDropRate.Attributes != null ? JsonObject.FromJson(selectedDropRate.Attributes.ToJsonToken()) : null;
                     }
                     
                     jis.Resolve(Api.World, "SluiceBlockEntity");
