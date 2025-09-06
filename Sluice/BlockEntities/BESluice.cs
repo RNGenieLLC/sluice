@@ -51,6 +51,7 @@ namespace Sluice.BlockEntities
                 toggleInventoryDialogClient(byPlayer, delegate
                 {
                     gui = new SluiceGUI(inventory, Pos, Api as ICoreClientAPI);
+                    gui.Update(15 - TimePerBlock);
                     return gui;
                 });
             }
@@ -91,6 +92,7 @@ namespace Sluice.BlockEntities
                     SluiceInput();
                     TimePerBlock = 15f;
                 }
+                MarkDirty();
             }
         }
 
@@ -208,6 +210,26 @@ namespace Sluice.BlockEntities
                 {
                     gui.SingleComposer.ReCompose();
                 }
+            }
+        }
+
+        public override void ToTreeAttributes(ITreeAttribute tree)
+        {
+            base.ToTreeAttributes(tree);
+            ITreeAttribute treeAttribute = new TreeAttribute();
+            inventory.ToTreeAttributes(treeAttribute);
+            tree["inventory"] = treeAttribute;
+            tree.SetFloat("TimePerBlock", TimePerBlock);
+        }
+
+        public override void FromTreeAttributes(ITreeAttribute tree, IWorldAccessor worldForResolving)
+        {
+            base.FromTreeAttributes(tree, worldForResolving);
+            inventory.FromTreeAttributes(tree.GetTreeAttribute("inventory"));
+            TimePerBlock = tree.GetFloat("TimePerBlock");
+            if (worldForResolving.Side == EnumAppSide.Client && gui != null)
+            {
+                gui.Update(15 - TimePerBlock);
             }
         }
     }

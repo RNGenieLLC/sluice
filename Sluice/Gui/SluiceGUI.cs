@@ -71,7 +71,7 @@ namespace Sluice.Gui
             ctx.Matrix = matrix;
             capi.Gui.Icons.DrawArrowRight(ctx, 2.0);
             double num2 = currentBlockTime / 15;
-            ctx.Rectangle(GuiElement.scaled(5.0), 0.0, GuiElement.scaled(125.0 * num2), GuiElement.scaled(100.0));
+            ctx.Rectangle(GuiElement.scaled(5.0), 0.0, GuiElement.scaled(80.0 * num2), GuiElement.scaled(100.0));
             ctx.Clip();
             LinearGradient linearGradient = new LinearGradient(0.0, 0.0, GuiElement.scaled(200.0), 0.0);
             linearGradient.AddColorStop(0.0, new Color(0.0, 0.4, 0.0, 1.0));
@@ -85,12 +85,10 @@ namespace Sluice.Gui
         public void Update(float currentBlockTime)
         {
             this.currentBlockTime = currentBlockTime;
-            if (IsOpened() && capi.ElapsedMilliseconds - lastRedrawMs > 100)
+            if (IsOpened())
             {
-                capi.Logger.Warning("Redrawing Sluice GUI");
                 if (base.SingleComposer != null)
                 {
-                    capi.Logger.Warning("We have composer");
                     base.SingleComposer.GetCustomDraw("symbolDrawer").Redraw();
                 }
 
