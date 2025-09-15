@@ -1,4 +1,5 @@
 {
     "sluice:block-sluice": "Sluice",
-    "sluice:block-horizontalsluice-*": "Sluice"
+    "sluice:block-horizontalsluice-*": "Sluice",
+    "sluice:block-woodsluice-*": "Wooden Sluice"
 }

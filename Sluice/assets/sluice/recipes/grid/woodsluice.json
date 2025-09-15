@@ -1,0 +1,15 @@
+{
+    "ingredientPattern": "III",
+    "width": 3,
+    "height": 1,
+    "ingredients": {
+        "I": {
+            "type": "item",
+            "code": "game:plank-*"
+        }
+    },
+    "output": {
+        "type": "block",
+        "code":  "woodsluice-north"
+    }
+}

@@ -10,7 +10,7 @@ A simple sluice for automated panning in Vintage Story. This mod adds an automat
   - Boney Soil (for bones, artifacts, and rare items)
   - Sand and Gravel (for ores, gems, and basic resources)
   - Muddy Gravel (for seeds, plants, and organic materials)
-- **Configurable Settings**: Adjust processing speed and drop rates through mod configuration
+- **Configurable Settings**: Adjust processing speed and drop rates through mod json files
 - **Multiblock Structure**: 3x1x1 sluice that can be oriented in any direction
 - **Inventory Management**: Built-in container for input materials and output items
 
@@ -65,11 +65,11 @@ The easiest way to install the mod is using the one-click install button from th
 
 ## Configuration
 
-The mod includes configurable settings that can be adjusted in the mod configuration file:
+The mod includes configurable settings that can be adjusted in the attributes of the sluice block:
 
 - **Sluice Speed**: Controls how fast the sluice processes materials (default: 1.0)
-- **Chance for Drop**: Controls the probability of getting items per processing cycle (default: 0.25)
-- **Drop Rates**: Individual drop rates for each item can be customized
+- **Sluice Time Per Block**: Controls the time it takes to process one block of material (default: 15)
+- **Drop Rates**: Individual drop rates for each item can be customized in the panningDrops attribute
 
 ## Requirements
 
@@ -96,9 +96,7 @@ We welcome contributions from the community! Please see our [Contributing Guide]
 
 If you encounter any issues or have questions about the mod, please:
 
-1. Check the [Issues](https://github.com/yourusername/sluice/issues) page to see if your problem has already been reported
+1. Check the [Issues](https://github.com/Bloodypizza17/Sluice/issues) page to see if your problem has already been reported
 2. Create a new issue with detailed information about the problem
 3. Include your Vintage Story version and any relevant error messages
 ---
-
-*This mod is not affiliated with or endorsed by Anego Studios or the Vintage Story development team.*
