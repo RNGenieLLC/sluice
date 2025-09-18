@@ -1,0 +1,97 @@
+name: Build and Release
+
+on:
+  push:
+    tags:
+      - 'v*'  # Triggers on version tags like v1.0.0, v2.3.1, etc.
+  workflow_dispatch:  # Allows manual triggering
+
+permissions:
+  contents: write  # Required for creating releases
+
+jobs:
+  build-and-release:
+    runs-on: windows-latest  # Using Windows since you have a PowerShell build script
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Extract target framework from csproj
+      id: get_target_framework
+      run: |
+        [xml]$csproj = Get-Content "Sluice/Sluice.csproj"
+        $targetFramework = $csproj.Project.PropertyGroup.TargetFramework
+        Write-Host "Target Framework: $targetFramework"
+        
+        # Map target framework to .NET version
+        $dotnetVersion = switch ($targetFramework) {
+            "net7.0" { "7.0.x" }
+            "net8.0" { "8.0.x" }
+            "net6.0" { "6.0.x" }
+            default { "8.0.x" }  # Default to 8.0 if unknown
+        }
+        
+        Write-Host "Will install .NET version: $dotnetVersion"
+        echo "target_framework=$targetFramework" >> $env:GITHUB_OUTPUT
+        echo "dotnet_version=$dotnetVersion" >> $env:GITHUB_OUTPUT
+      shell: powershell
+      
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: ${{ steps.get_target_framework.outputs.dotnet_version }}
+        
+    - name: Restore dependencies
+      run: dotnet restore
+      
+    - name: Run build script
+      run: .\build.ps1
+      shell: powershell
+      
+    - name: Get version from modinfo.json
+      id: get_version
+      run: |
+        $modinfo = Get-Content "Sluice/modinfo.json" | ConvertFrom-Json
+        $version = $modinfo.version
+        $modid = $modinfo.modid
+        echo "version=$version" >> $env:GITHUB_OUTPUT
+        echo "modid=$modid" >> $env:GITHUB_OUTPUT
+        echo "zip_name=${modid}_${version}.zip" >> $env:GITHUB_OUTPUT
+      shell: powershell
+      
+    - name: Verify build output
+      run: |
+        Write-Host "Checking for build output..."
+        Get-ChildItem -Path "Releases" -Recurse
+      shell: powershell
+      
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ github.ref_name || format('v{0}', steps.get_version.outputs.version) }}
+        release_name: Release ${{ steps.get_version.outputs.version }}
+        body: |
+          Release of ${{ steps.get_version.outputs.modid }} version ${{ steps.get_version.outputs.version }}
+          
+          **Target Framework:** ${{ steps.get_target_framework.outputs.target_framework }}
+          **Built with .NET:** ${{ steps.get_target_framework.outputs.dotnet_version }}
+          
+          ## Changes
+          - Automated release build
+          
+        draft: false
+        prerelease: false
+        
+    - name: Upload Release Asset
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./Releases/${{ steps.get_version.outputs.zip_name }}
+        asset_name: ${{ steps.get_version.outputs.zip_name }}
+        asset_content_type: application/zip
