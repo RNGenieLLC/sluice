@@ -170,10 +170,6 @@ namespace Sluice.BlockEntities
                 {
                     itemStack = Resolve(array[i].Type, array[i].Code.Path.Replace("{rocktype}", newValue));
                 }
-                if (itemStack != null) 
-                {
-                    Api.Logger.Debug("I am not a null item stack");
-                }
 
                 if (num < (double)num3 && itemStack != null)
                 {
